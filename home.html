@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Study Companion</title>
+    <style>
+        /* Root Variables */
+:root {
+    --primary-bg: #F4F6F9;
+    --primary-text: #333;
+    --accent-color: #00B8A9;
+    --highlight-color: #005A4A;
+    --button-hover: #008C7D;
+    --signup-border: #00B8A9;
+    --font-family: 'Arial', sans-serif;
+    --transition-duration: 0.3s;
+}
+
+/* Dark Mode Variables */
+[data-theme="dark"] {
+    --primary-bg: #111;
+    --primary-text: #fff;
+    --accent-color: #00B8A9;
+    --highlight-color: #005A4A;
+    --button-hover: #008C7D;
+    --signup-border: #00B8A9;
+}
+
+/* Body Styles */
+body {
+    margin: 0;
+    font-family: var(--font-family);
+    background-color: var(--primary-bg);
+    color: var(--primary-text);
+    line-height: 1.6;
+    transition: background-color var(--transition-duration), color var(--transition-duration);
+}
+
+/* Navbar Styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: #113D4B;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.navbar a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 20px;
+    font-size: 18px;
+    font-weight: bold;
+    transition: color var(--transition-duration);
+}
+
+.navbar a:hover {
+    color: var(--accent-color);
+}
+
+.navbar .search-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid var(--highlight-color);
+    border-radius: 30px;
+    padding: 8px;
+    background-color: #fff;
+    transition: background-color var(--transition-duration);
+}
+
+.search-box input {
+    padding: 8px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    color: var(--primary-text);
+    background-color: #fff;
+    width: 250px;
+    border-radius: 25px;
+}
+
+/* Placeholder text color for light mode */
+.search-box input::placeholder {
+    color: var(--primary-text);
+    opacity: 0.7;
+}
+
+/* Placeholder text color for dark mode */
+[data-theme="dark"] .search-box input::placeholder {
+    color: #444343; /* Lighter text color for dark mode */
+    opacity: 0.7;
+}
+
+.theme-toggle {
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: var(--highlight-color);
+    font-size: 28px;
+    padding: 12px;
+    border-radius: 50%;
+    transition: background-color var(--transition-duration), color var(--transition-duration);
+}
+
+.theme-toggle:hover {
+    background-color: var(--highlight-color);
+    color: #fff;
+}
+
+/* Hero Section */
+.hero {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 80px 50px;
+    background-color: #113D4B;
+    border-radius: 20px;
+    margin: 50px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    color: #fff;
+}
+
+.hero-text {
+    max-width: 50%;
+    text-align: left;
+}
+
+.hero-text h1 {
+    font-size: 56px;
+    color: var(--accent-color);
+    margin-bottom: 20px;
+}
+
+.hero-text p {
+    margin: 20px 0;
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+.hero-text button {
+    background-color: var(--accent-color);
+    border: none;
+    padding: 15px 30px;
+    border-radius: 30px;
+    cursor: pointer;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    transition: background-color var(--transition-duration);
+    margin-top: 20px;
+}
+
+.hero-text button:hover {
+    background-color: var(--button-hover);
+}
+
+.hero-image img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Signup Button Styles */
+.signup {
+    color: var(--highlight-color);
+    font-weight: bold;
+    font-size: 16px;
+    text-decoration: none;
+    border: 2px solid var(--signup-border);
+    border-radius: 30px;
+    padding: 10px 20px;
+    transition: box-shadow var(--transition-duration);
+}
+
+/* On Hover */
+.signup:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+    color: var(--highlight-color); /* Keep text color the same */
+}
+
+/* Portfolio Section */
+.portfolio {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 40px;
+}
+
+.portfolio-item {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform var(--transition-duration);
+}
+
+.portfolio-item:hover {
+    transform: translateY(-10px);
+}
+
+.portfolio-item h3 {
+    font-size: 20px;
+    color: var(--highlight-color);
+    margin-bottom: 10px;
+}
+
+.portfolio-item p {
+    font-size: 16px;
+    color: var(--primary-text);
+    margin-bottom: 15px;
+}
+
+.portfolio-item button {
+    background-color: var(--highlight-color);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 30px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color var(--transition-duration);
+}
+
+.portfolio-item button:hover {
+    background-color: var(--button-hover);
+}
+/* Portfolio Item Description Text */
+[data-theme="dark"] .portfolio-item p {
+    color: #080808; /* Lighter color for text in dark mode */
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px;
+    }
+
+    .hero {
+        flex-direction: column;
+        align-items: center;
+        padding: 40px 20px;
+        margin: 20px;
+    }
+
+    .hero-text {
+        max-width: 90%;
+        text-align: center;
+    }
+
+    .hero-image img {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .portfolio {
+        grid-template-columns: 1fr;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="logo">
+            <a href="#">Smart Study Companion</a>
+        </div>
+        <div class="menu">
+            <a href="#">Courses</a>
+            <a href="#">Tutorials</a>
+            <a href="#">Planner</a>
+            <a href="#">Dashboard</a>
+        </div>
+        <div class="search-box">
+            <input type="text" placeholder="Search...">
+        </div>
+        <div class="actions">
+            <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+            <a href="Singup page.html" class="signup">Sign up ➔</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="hero-text">
+            <h1>Smart Study Companion</h1>
+            <p>Transform your learning experience with personalized study plans, courses, and tasks. Start your journey today!</p>
+            <button>Start free today ➔</button>
+        </div>
+        <div class="hero-image">
+            <img src="im3.jpg" alt="Study Illustration">
+        </div>
+    </div>
+
+    <!-- Portfolio Section -->
+    <div class="portfolio">
+        <div class="portfolio-item">
+            <h3>Project 1</h3>
+            <p>Description of the project goes here. Highlight skills and technologies used.</p>
+            <button>View Project</button>
+        </div>
+        <div class="portfolio-item">
+            <h3>Project 2</h3>
+            <p>Description of the project goes here. Highlight skills and technologies used.</p>
+            <button>View Project</button>
+        </div>
+        <!-- Add more portfolio items here -->
+    </div>
+
+    <script>
+        // Check localStorage for theme preference on page load
+        window.onload = () => {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                document.body.setAttribute('data-theme', savedTheme);
+            }
+        };
+
+        // Toggle theme between light and dark
+        function toggleTheme() {
+            const currentTheme = document.body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            document.body.setAttribute('data-theme', newTheme);
+            
+            // Save the selected theme in localStorage
+            localStorage.setItem('theme', newTheme);
+        }
+    </script>
+</body>
+</html>

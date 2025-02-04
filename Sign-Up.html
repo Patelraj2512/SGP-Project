@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up - Smart Study Companion</title>
+  <style>
+    /* Body styling */
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      position: relative;
+      color: #fff;
+      overflow: hidden;
+    }
+
+    /* Image used as a background */
+    .background-img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Ensures image covers the full area */
+      filter: blur(10px); /* Blur effect */
+      z-index: -1; /* Places it behind all other elements */
+    }
+
+    /* Main content styling */
+    .content {
+      z-index: 1;
+      text-align: center;
+      background-color: rgba(18, 50, 49, 0.9); /* Slight transparency */
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0px 5px 30px rgba(251, 250, 250, 0.5); /* Subtle shadow effect */
+      width: 90%;
+      max-width: 400px;
+    }
+
+    .content h1 {
+      font-size: 28px;
+      margin-bottom: 15px;
+    }
+
+    .content p {
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+
+    /* Textbox styling */
+    .content input {
+      width: 100%;
+      padding: 12px 15px;
+      margin: 10px 0;
+      font-size: 16px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      box-sizing: border-box;
+      background-color: #f5f5f5; /* Light gray background */
+      transition: border-color 0.3s ease, background-color 0.3s ease;
+    }
+
+    .content input:focus {
+      border-color: #298060; /* Green border on focus */
+      background-color: #fff; /* White background on focus */
+      outline: none;
+    }
+
+    .content button {
+      background-color: #298060;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 12px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .content button:hover {
+      background-color: #1f5e48;
+    }
+
+    .content .link {
+      display: block;
+      margin-top: 20px;
+      color: #69c4a4;
+      text-decoration: none;
+    }
+
+    .content .link:hover {
+      text-decoration: underline;
+    }
+
+    .error-message {
+      color: #f44336;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Background Image -->
+  <img src="d:\OneDrive\Desktop\Project sem 4\image.png" alt="Background" class="background-img">
+
+  <!-- Main Content -->
+  <div class="content">
+    <h1>Create Your Account</h1>
+    <p>Join the Smart Study Companion community!</p>
+    <form id="signupForm">
+      <input type="text" id="username" name="username" placeholder="Username" required>
+      <input type="email" id="email" name="email" placeholder="Email" required>
+      <input type="password" id="password" name="password" placeholder="Password" required>
+      <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required>
+      <button type="submit">Sign Up</button>
+    </form>
+    <a href="login.html" class="link">Already have an account? Log in</a>
+    <p class="error-message" id="error-message"></p>
+  </div>
+
+  <script>
+    // Function to handle form submission
+    document.getElementById('signupForm').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent the form from submitting automatically
+
+      // Clear any previous error messages
+      document.getElementById('error-message').textContent = '';
+
+      // Get values from the form
+      const username = document.getElementById('username').value;
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('confirmPassword').value;
+
+      // Validate the fields
+      if (!username || !email || !password || !confirmPassword) {
+        document.getElementById('error-message').textContent = 'All fields are required.';
+        return;
+      }
+
+      // Email format validation
+      const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      if (!emailPattern.test(email)) {
+        document.getElementById('error-message').textContent = 'Please enter a valid email address.';
+        return;
+      }
+
+      // Password criteria (at least 6 characters)
+      if (password.length < 6) {
+        document.getElementById('error-message').textContent = 'Password must be at least 6 characters long.';
+        return;
+      }
+
+      // Confirm password validation
+      if (password !== confirmPassword) {
+        document.getElementById('error-message').textContent = 'Passwords do not match.';
+        return;
+      }
+
+      // Simulate successful sign-up (You can replace this with actual registration logic)
+      alert('Sign up successful!');
+      window.location.href = 'login.html'; // Redirect to the login page after successful signup
+    });
+  </script>
+</body>
+</html>
